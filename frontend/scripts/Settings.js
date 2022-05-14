@@ -36,6 +36,7 @@ window.onload = () => {
         localStorage.setItem("theme", element.name)
         SetTheme(element.name)
         console.log(`set theme to ${element.name}`)
+        event.preventDefault()
     }
 
     const OnLanguageButtonSelect = (event, element) => {
@@ -61,7 +62,7 @@ window.onload = () => {
                 let element = document.createElement("button")
                 element.classList.add("theme-selection")
                 element.name = data[i]
-                element.style.display = "block"
+                element.style.display = "inline-block"
                 element.innerHTML = data[i]
                 themesForm.appendChild(element)
 
@@ -80,7 +81,7 @@ window.onload = () => {
                 let element = document.createElement("button")
                 element.classList.add("language-selection")
                 element.name = data[i]
-                element.style.display = "block"
+                element.style.display = "inline-block"
                 element.innerHTML = data[i]
                 languagesForm.appendChild(element)
 
