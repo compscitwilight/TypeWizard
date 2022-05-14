@@ -49,7 +49,6 @@ window.onload = () => {
             }
 
             let confirmation = confirm(changeLanguageConfirmationMsg)
-
             if (confirmation) {
                 localStorage.setItem("language", element.name)
             } else {
