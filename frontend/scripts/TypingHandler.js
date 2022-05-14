@@ -11,7 +11,6 @@ fetch(`/frontend/static/languages/${localStorage.getItem("language")}.json`)
             const randomIndex = Math.floor(Math.random() * (words.length))
             const word = words[randomIndex]
             text = text + ` ${word}`
-            console.log(words)
         }
 
         const sequenceElements = []

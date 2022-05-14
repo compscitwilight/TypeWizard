@@ -29,6 +29,7 @@ window.onload = () => {
         }
     }
     SetTheme(localStorage.getItem("theme"))
+    if (!themesForm && !languagesForm) return
 
     // event functions
     const OnThemeButtonSelect = (event, element) => {
