@@ -35,7 +35,6 @@ window.onload = () => {
     const OnThemeButtonSelect = (event, element) => {
         localStorage.setItem("theme", element.name)
         SetTheme(element.name)
-        console.log(`set theme to ${element.name}`)
         event.preventDefault()
     }
 

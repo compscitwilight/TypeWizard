@@ -81,3 +81,10 @@ a {
     padding: 10px;
     border-radius: 1%;
 }
+
+button {
+    background-color: rgb(16, 15, 16);
+    margin: 1px;
+    padding: 10px;
+    border-style: none;
+}
