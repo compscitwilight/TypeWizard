@@ -1,5 +1,8 @@
 const themeSelections = document.getElementsByClassName("theme-selection")
+const languageSelections = document.getElementsByClassName("language-selection")
+
 const themePaths = "/frontend/src/styles/themes"
+const changeLanguageConfirmationMsg = `Are you sure you want to change your language? This will make browsing the website more difficult if you do not speak the language.`
 
 if (!localStorage.getItem("theme") || !localStorage.getItem("language")) {
     localStorage.setItem("theme", "Basic")
@@ -33,6 +36,25 @@ window.onload = () => {
             localStorage.setItem("theme", element.name)
             SetTheme(element.name)
             console.log(`set theme to ${element.name}`)
+        })
+    }
+
+    // language
+    for (var i = 0; i < languageSelections.length; i++) {
+        const element = languageSelections[i]
+        element.addEventListener("click", (event) => {
+            if (element.name == localStorage.getItem("language")) {
+                event.preventDefault()
+                return
+            }
+
+            let confirmation = confirm(changeLanguageConfirmationMsg)
+
+            if (confirmation) {
+                localStorage.setItem("language", element.name)
+            } else {
+                event.preventDefault()
+            }
         })
     }
 }
