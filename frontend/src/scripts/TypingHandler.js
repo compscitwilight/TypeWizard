@@ -1,4 +1,4 @@
-fetch(`/frontend/static/languages/${localStorage.getItem("language")}.json`)
+fetch(`/languages/${localStorage.getItem("language")}`)
     .then(res => {
         return res.json()
     }).then(data => {
@@ -122,4 +122,6 @@ fetch(`/frontend/static/languages/${localStorage.getItem("language")}.json`)
             }
         })
 
+    }).catch(err => {
+        console.warn(err)
     })

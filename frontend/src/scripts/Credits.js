@@ -1,4 +1,4 @@
-const ContributorsJSON = "/frontend/static/config/contributors.json"
+const ContributorsJSON = "/config/contributors"
 const ContributorsLi = document.querySelector("#contributors")
 
 $.getJSON(ContributorsJSON).done((data) => {

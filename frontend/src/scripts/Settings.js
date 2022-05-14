@@ -3,7 +3,7 @@ const languagesForm = document.querySelector("#languages")
 const themeSelections = document.getElementsByClassName("theme-selection")
 const languageSelections = document.getElementsByClassName("language-selection")
 
-const themePaths = "/frontend/src/styles/themes"
+const themePaths = "/themes"
 const changeLanguageConfirmationMsg = `Are you sure you want to change your language? This will make navigating the website difficult if you do not understand the language.`
 
 if (!localStorage.getItem("theme") || !localStorage.getItem("language")) {
@@ -14,7 +14,7 @@ if (!localStorage.getItem("theme") || !localStorage.getItem("language")) {
 window.onload = () => {
     // functions
     const SetTheme = (name) => {
-        const themePath = `${themePaths}/${name}.css`
+        const themePath = `${themePaths}/${name}`
         try {
             const linkTag = document.querySelector("#theme-link-tag")
             linkTag.href = themePath
@@ -53,7 +53,7 @@ window.onload = () => {
     }
 
     // adding all themes to the themes form
-    fetch("/frontend/static/config/themes.json")
+    fetch("/config/themes")
         .then(res => {
             return res.json()
         }).then(data => {
@@ -70,10 +70,12 @@ window.onload = () => {
                     OnThemeButtonSelect(event, element)
                 })
             }
+        }).catch(err => {
+            console.warn(err)
         })
 
     // adding all languages to the languages form
-    fetch("/frontend/static/config/languages.json")
+    fetch("/config/languages")
         .then(res => {
             return res.json()
         }).then(data => {
@@ -90,5 +92,7 @@ window.onload = () => {
                     OnLanguageButtonSelect(event, element)
                 })
             }
+        }).catch(err => {
+            console.warn(err)
         })
 }
