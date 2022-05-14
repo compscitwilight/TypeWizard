@@ -1,9 +1,10 @@
-let words = []
+let words = ["please", "yea", "code", "where", "interest", "me", "for", "were", "as", "comprehend"]
+/*
 $.getJSON(`/frontend/static/languages/${localStorage.getItem("language")}.json`).done((data) => {
     console.log(data)
     words = data
 })
-
+*/
 const wordCount = 30
 let text = ""
 for (var i = 0; i < wordCount; i++) {
