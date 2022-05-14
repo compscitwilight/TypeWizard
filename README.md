@@ -4,5 +4,6 @@
 ### Features
 * Simple design
 * Multiple themes
+* Multiple language support
 * Open-source project
 * And upcoming features in the future!
