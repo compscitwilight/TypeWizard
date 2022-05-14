@@ -4,7 +4,7 @@ const themeSelections = document.getElementsByClassName("theme-selection")
 const languageSelections = document.getElementsByClassName("language-selection")
 
 const themePaths = "/frontend/src/styles/themes"
-const changeLanguageConfirmationMsg = `Are you sure you want to change your language? This will make browsing the website more difficult if you do not speak the language.`
+const changeLanguageConfirmationMsg = `Are you sure you want to change your language? This will make navigating the website difficult if you do not understand the language.`
 
 if (!localStorage.getItem("theme") || !localStorage.getItem("language")) {
     localStorage.setItem("theme", "Basic")
@@ -62,6 +62,7 @@ window.onload = () => {
                 element.classList.add("theme-selection")
                 element.name = data[i]
                 element.style.display = "inline-block"
+                element.style.cursor = "pointer"
                 element.innerHTML = data[i]
                 themesForm.appendChild(element)
 
@@ -81,6 +82,7 @@ window.onload = () => {
                 element.classList.add("language-selection")
                 element.name = data[i]
                 element.style.display = "inline-block"
+                element.style.cursor = "pointer"
                 element.innerHTML = data[i]
                 languagesForm.appendChild(element)
 
