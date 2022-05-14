@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+
+* {
+    color: black;
+    font-family: 'Montserrat';
+}
+
+body {
+    background-color: rgb(225, 225, 225);
+}
+
+#topbar {
+    background-color: rgb(121, 121, 121);
+    padding: 8px 10px;
+    display: block;
+    text-align: center;
+}
+
+#topbar a {
+    margin: 3px;
+    text-decoration: none;
+    color: rgb(171, 171, 171);
+}
+
+#topbar a:hover {
+    color: rgb(126, 255, 253);
+}
+
+#topbar a:active {
+    color: rgb(126, 255, 253);
+}
+
+#menubar {
+    height: 100%;
+    width: 250px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+
+#sequence {
+    background-color: rgb(179, 179, 179);
+    border-style: solid;
+    border-color: rgb(181, 181, 181);
+    padding: 10px;
+    border-radius: 1%;
+}
+
+#stats {
+    background-color: rgb(179, 179, 179);
+    border-style: solid;
+    border-color: white;
+    color: white;
+    padding: 10px;
+    border-radius: 1%;
+    visibility: hidden;
+}
+
+#test-title-word1 {
+    color: rgb(47, 210, 255);
+    display: inline;
+}
+
+#test-title-word2 {
+    color: black;
+    display: inline;
+}
+
+h2 {
+    text-align: center;
+}
+
+a {
+    color: rgb(126, 210, 255);
+}
+
+#settings-main {
+    background-color: rgb(179, 179, 179);
+    color: white;
+    padding: 10px;
+    border-radius: 1%;
+}
