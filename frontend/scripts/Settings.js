@@ -1,3 +1,5 @@
+const themesForm = document.querySelector("#themes")
+const languagesForm = document.querySelector("#languages")
 const themeSelections = document.getElementsByClassName("theme-selection")
 const languageSelections = document.getElementsByClassName("language-selection")
 
@@ -26,34 +28,64 @@ window.onload = () => {
             console.warn(err)
         }
     }
-
     SetTheme(localStorage.getItem("theme"))
 
-    // theme
-    for (var i = 0; i < themeSelections.length; i++) {
-        const element = themeSelections[i]
-        element.addEventListener("click", () => {
-            localStorage.setItem("theme", element.name)
-            SetTheme(element.name)
-            console.log(`set theme to ${element.name}`)
-        })
+    // event functions
+    const OnThemeButtonSelect = (event, element) => {
+        localStorage.setItem("theme", element.name)
+        SetTheme(element.name)
+        console.log(`set theme to ${element.name}`)
     }
 
-    // language
-    for (var i = 0; i < languageSelections.length; i++) {
-        const element = languageSelections[i]
-        element.addEventListener("click", (event) => {
-            if (element.name == localStorage.getItem("language")) {
-                event.preventDefault()
-                return
-            }
+    const OnLanguageButtonSelect = (event, element) => {
+        if (element.name == localStorage.getItem("language")) {
+            event.preventDefault()
+            return
+        }
 
-            let confirmation = confirm(changeLanguageConfirmationMsg)
-            if (confirmation) {
-                localStorage.setItem("language", element.name)
-            } else {
-                event.preventDefault()
+        let confirmation = confirm(changeLanguageConfirmationMsg)
+        if (confirmation) {
+            localStorage.setItem("language", element.name)
+        } else {
+            event.preventDefault()
+        }
+    }
+
+    // adding all themes to the themes form
+    fetch("/frontend/static/config/themes.json")
+        .then(res => {
+            return res.json()
+        }).then(data => {
+            for (var i = 0; i < data.length; i++) {
+                let element = document.createElement("button")
+                element.classList.add("theme-selection")
+                element.name = data[i]
+                element.style.display = "block"
+                element.innerHTML = data[i]
+                themesForm.appendChild(element)
+
+                element.addEventListener("click", (event) => {
+                    OnThemeButtonSelect(event, element)
+                })
             }
         })
-    }
+
+    // adding all languages to the languages form
+    fetch("/frontend/static/config/languages.json")
+        .then(res => {
+            return res.json()
+        }).then(data => {
+            for (var i = 0; i < data.length; i++) {
+                let element = document.createElement("button")
+                element.classList.add("language-selection")
+                element.name = data[i]
+                element.style.display = "block"
+                element.innerHTML = data[i]
+                languagesForm.appendChild(element)
+
+                element.addEventListener("click", (event) => {
+                    OnLanguageButtonSelect(event, element)
+                })
+            }
+        })
 }
