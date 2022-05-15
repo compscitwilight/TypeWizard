@@ -1,7 +1,6 @@
 const express = require("express")
 const fs = require("fs")
 const ws = require("ws")
-const site = express()
 
 const scripts = require("./routes/scripts")
 const themes = require("./routes/themes")
@@ -11,6 +10,8 @@ const config = require("./routes/config")
 
 const PORT = 5500
 const ROOT = { root: ".." }
+
+const site = express()
 
 // endpoints
 site.use("/scripts", scripts)
