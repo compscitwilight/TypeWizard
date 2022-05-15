@@ -6,7 +6,10 @@ const ROOT = { root: "../" }
 
 router.get("/:language", (req, res) => {
     const path = `/static/languages/${req.params.language}.json`
-    if (!fs.existsSync(`${ROOT.root}${path}`)) return
+    if (!fs.existsSync(`${ROOT.root}${path}`)) {
+        res.sendFile("/frontend/src/pages/notfound.html", ROOT)
+        return
+    }
 
     res.sendFile(path, ROOT)
 })
