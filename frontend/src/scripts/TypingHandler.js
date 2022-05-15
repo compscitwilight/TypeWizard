@@ -24,6 +24,7 @@ fetch(`/languages/${localStorage.getItem("language")}`)
         }
 
         // every quarter of a second the WPM stat will be decreased by 1
+        /*
         const decaySpeed = () => {
             if (stats.speed > 0) {
                 stats.speed--
@@ -31,7 +32,7 @@ fetch(`/languages/${localStorage.getItem("language")}`)
             }
         }
         decaySpeed()
-
+        */
         const tick = () => {
             stats.time++
             setTimeout(tick, 1000)
@@ -66,6 +67,8 @@ fetch(`/languages/${localStorage.getItem("language")}`)
         }
 
         const displayStats = () => {
+            stats.speed = wordCount / (stats.time / 0.6)
+
             statsDiv.style.visibility = "visible"
             speedStatP.innerHTML = `Speed: ${Math.round(stats.speed)} WPM`
             accuracyStatP.innerHTML = `Accuracy: ${stats.accuracy}%`
@@ -88,12 +91,10 @@ fetch(`/languages/${localStorage.getItem("language")}`)
                 element.style.fontFamily = "Montserrat"
 
                 index++
-                stats.speed += .5
                 nextChar = text[index]
             } else if (event.key == "Backspace") {
                 if (index > 1) {
                     index--
-                    stats.speed -= .25
                     nextChar = text[index]
 
                     const element = sequenceElements[index]
@@ -110,7 +111,6 @@ fetch(`/languages/${localStorage.getItem("language")}`)
                 element.style.borderWidth = ".25px"
 
                 index++
-                stats.speed -= .25
                 nextChar = text[index]
 
                 if (accuracy > 0 && accuracy <= 100) stats.accuracy -= 2

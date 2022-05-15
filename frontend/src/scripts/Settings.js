@@ -68,7 +68,7 @@ window.onload = () => {
             linkTag.href = themePath
             linkTag.rel = "stylesheet"
 
-            console.warn(err)
+            location.reload()
         }
     }
     SetTheme(localStorage.getItem("theme"))
