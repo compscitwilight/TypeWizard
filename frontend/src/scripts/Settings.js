@@ -10,7 +10,7 @@ const changeLanguageConfirmationMsg = `Are you sure you want to change your lang
 
 const DefaultSettings = {
     Theme: "Basic",
-    Language: "English",
+    Language: "EnglishUS",
     WordCount: 30
 }
 
