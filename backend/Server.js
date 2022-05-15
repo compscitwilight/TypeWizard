@@ -1,5 +1,6 @@
 const express = require("express")
 const fs = require("fs")
+const ws = require("ws")
 const site = express()
 
 const scripts = require("./routes/scripts")
