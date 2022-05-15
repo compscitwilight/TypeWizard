@@ -82,10 +82,10 @@ window.onload = () => {
             for (var i = 0; i < data.length; i++) {
                 let element = document.createElement("button")
                 element.classList.add("language-selection")
-                element.name = data[i]
+                element.name = data[i].name
                 element.style.display = "inline-block"
                 element.style.cursor = "pointer"
-                element.innerHTML = data[i]
+                element.innerHTML = data[i].displayName
                 languagesForm.appendChild(element)
 
                 element.addEventListener("click", (event) => {

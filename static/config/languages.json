@@ -1,11 +1,38 @@
 [
-    "English",
-    "Spanish",
-    "French",
-    "Dutch",
-    "German",
-    "Italian",
-    "Polish",
-    "Russian",
-    "Hindi"
+    {
+        "name": "English",
+        "displayName": "English"
+    },
+    {
+        "name": "Spanish",
+        "displayName": "Spanish (Español)"
+    },
+    {
+        "name": "French",
+        "displayName": "French (Français)"
+    },
+    {
+        "name": "Dutch",
+        "displayName": "Dutch (Nederlands)"
+    },
+    {
+        "name": "German",
+        "displayName": "Deutsch"
+    },
+    {
+        "name": "Italian",
+        "displayName": "Italian (Italiano)"
+    },
+    {
+        "name": "Polish",
+        "displayName": "Polish (Polski)"
+    },
+    {
+        "name": "Russian",
+        "displayName": "Russian (Русский)"
+    },
+    {
+        "name": "Hindi",
+        "displayName": "Hindi (हिन्दी)"
+    }
 ]
