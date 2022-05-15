@@ -34,5 +34,9 @@
     {
         "name": "Hindi",
         "displayName": "Hindi (हिन्दी)"
+    },
+    {
+        "name": "Portuguese",
+        "displayName": "Portuguese (Português)"
     }
 ]
