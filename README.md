@@ -7,3 +7,17 @@
 * Multiple language support
 * Open-source project
 * And upcoming features in the future!
+
+### Showcase
+<details>
+    <summary markdown="span">Homepage</summary>
+    <img src="/.github/images/TypeWizardHomepage.png">
+</details>
+<details>
+    <summary markdown="span">Settings</summary>
+    <img src="/.github/images/TypeWizardSettings.png">
+</details>
+<details>
+    <summary markdown="span">About</summary>
+    <img src="/.github/images/TypeWizardAbout.png">
+</details>
