@@ -68,6 +68,8 @@ window.onload = () => {
     SetTheme(localStorage.getItem("theme"))
     if (!themesForm && !languagesForm) return
 
+    wordCountInput.value = localStorage.getItem("wordCount") || 30
+
     // general settings
     wordCountBtn.addEventListener("click", (event) => {
         OnWordCountSet(event, event.target, wordCountInput.value)
