@@ -1,4 +1,5 @@
 const express = require("express")
+const fs = require("fs")
 const site = express()
 
 const scripts = require("./routes/scripts")
@@ -21,16 +22,14 @@ site.get("/", (req, res) => {
     res.sendFile("/frontend/src/pages/index.html", ROOT)
 })
 
-site.get("/about", (req, res) => {
-    res.sendFile("/frontend/src/pages/about.html", ROOT)
-})
+site.get("/:page", (req, res) => {
+    const path = `/frontend/src/pages/${req.params.page}.html`
+    if (!fs.existsSync(`${ROOT.root}${path}`)) {
+        res.sendFile("/frontend/src/pages/notfound.html", ROOT)
+        return
+    }
 
-site.get("/code", (req, res) => {
-    res.sendFile("/frontend/src/pages/code.html", ROOT)
-})
-
-site.get("/settings", (req, res) => {
-    res.sendFile("/frontend/src/pages/settings.html", ROOT)
+    res.sendFile(path, ROOT)
 })
 
 site.listen(PORT, () => {
