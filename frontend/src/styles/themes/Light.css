@@ -87,5 +87,6 @@ button {
     background-color: rgb(123, 123, 123);
     margin: 1px;
     padding: 10px;
+    cursor: pointer;
     border-style: none;
 }

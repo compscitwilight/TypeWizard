@@ -2,13 +2,56 @@ const themesForm = document.querySelector("#themes")
 const languagesForm = document.querySelector("#languages")
 const themeSelections = document.getElementsByClassName("theme-selection")
 const languageSelections = document.getElementsByClassName("language-selection")
+const wordCountInput = document.querySelector("#wordCountInput")
+const wordCountBtn = document.querySelector("#wordCountBtn")
 
 const themePaths = "/themes"
 const changeLanguageConfirmationMsg = `Are you sure you want to change your language? This will make navigating the website difficult if you do not understand the language.`
 
+const DefaultSettings = {
+    Theme: "Basic",
+    Language: "English",
+    WordCount: 30
+}
+
 if (!localStorage.getItem("theme") || !localStorage.getItem("language")) {
-    localStorage.setItem("theme", "Basic")
-    localStorage.setItem("language", "English")
+    localStorage.setItem("theme", DefaultSettings.Theme)
+    localStorage.setItem("language", DefaultSettings.Language)
+    localStorage.setItem("wordCount", DefaultSettings.WordCount)
+}
+
+// event functions
+const OnThemeButtonSelect = (event, element) => {
+    localStorage.setItem("theme", element.name)
+    SetTheme(element.name)
+    event.preventDefault()
+}
+
+const OnLanguageButtonSelect = (event, element) => {
+    if (element.name == localStorage.getItem("language")) {
+        event.preventDefault()
+        return
+    }
+
+    let confirmation = confirm(changeLanguageConfirmationMsg)
+    if (confirmation) {
+        localStorage.setItem("language", element.name)
+    } else {
+        event.preventDefault()
+    }
+}
+
+const OnWordCountSet = (event, element, count) => {
+    event.preventDefault()
+
+    try {
+        let number = Number(count)
+        localStorage.setItem("wordCount", count)
+
+        console.log("Set wordCount")
+    } catch (err) {
+        console.error(err)
+    }
 }
 
 window.onload = () => {
@@ -31,26 +74,10 @@ window.onload = () => {
     SetTheme(localStorage.getItem("theme"))
     if (!themesForm && !languagesForm) return
 
-    // event functions
-    const OnThemeButtonSelect = (event, element) => {
-        localStorage.setItem("theme", element.name)
-        SetTheme(element.name)
-        event.preventDefault()
-    }
-
-    const OnLanguageButtonSelect = (event, element) => {
-        if (element.name == localStorage.getItem("language")) {
-            event.preventDefault()
-            return
-        }
-
-        let confirmation = confirm(changeLanguageConfirmationMsg)
-        if (confirmation) {
-            localStorage.setItem("language", element.name)
-        } else {
-            event.preventDefault()
-        }
-    }
+    // general settings
+    wordCountBtn.addEventListener("click", (event) => {
+        OnWordCountSet(event, event.target, wordCountInput.value)
+    })
 
     // adding all themes to the themes form
     fetch("/config/themes")

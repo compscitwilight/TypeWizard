@@ -5,7 +5,7 @@ fetch(`/languages/${localStorage.getItem("language")}`)
         let words
         words = data
 
-        const wordCount = 30
+        const wordCount = localStorage.getItem("wordCount") || 30
         let text = ""
         for (var i = 0; i < wordCount; i++) {
             const randomIndex = Math.floor(Math.random() * (words.length))
