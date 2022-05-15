@@ -7,6 +7,7 @@ const themes = require("./routes/themes")
 const components = require("./routes/components")
 const languages = require("./routes/languages")
 const config = require("./routes/config")
+const localization = require("./routes/localization")
 
 const PORT = 5500
 const ROOT = { root: ".." }
@@ -19,6 +20,7 @@ site.use("/themes", themes)
 site.use("/components", components)
 site.use("/languages", languages)
 site.use("/config", config)
+site.use("/localization", localization)
 
 site.get("/", (req, res) => {
     res.sendFile("/frontend/src/pages/index.html", ROOT)
