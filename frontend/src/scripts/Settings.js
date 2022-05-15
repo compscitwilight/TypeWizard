@@ -2,8 +2,16 @@ const themesForm = document.querySelector("#themes")
 const languagesForm = document.querySelector("#languages")
 const themeSelections = document.getElementsByClassName("theme-selection")
 const languageSelections = document.getElementsByClassName("language-selection")
-const wordCountInput = document.querySelector("#wordCountInput")
-const wordCountBtn = document.querySelector("#wordCountBtn")
+
+const settingsInputs = {
+    WordCount: document.querySelector("#wordCountInput"),
+    PageZoom: document.querySelector("#pageZoomInput")
+}
+
+const settingsButtons = {
+    WordCount: document.querySelector("#wordCountBtn"),
+    PageZoom: document.querySelector("#pageZoomBtn")
+}
 
 const themePaths = "/themes"
 const changeLanguageConfirmationMsg = `Are you sure you want to change your language? This will make navigating the website difficult if you do not understand the language.`
@@ -41,16 +49,23 @@ const OnLanguageButtonSelect = (event, element) => {
     }
 }
 
+const ChangeSetting = (setting, value) => localStorage.setItem(setting, value)
 const OnWordCountSet = (event, element, count) => {
     event.preventDefault()
 
     try {
         let number = Number(count)
-        localStorage.setItem("wordCount", count)
-
-        console.log("Set wordCount")
+        ChangeSetting("wordCount", count)
     } catch (err) {
         console.error(err)
+    }
+}
+
+const OnPageZoomSet = (event, element, zoom) => {
+    event.preventDefault()
+
+    if (zoom.endsWith("%")) {
+        document.body.style.zoom = zoom
     }
 }
 
@@ -71,9 +86,8 @@ window.onload = () => {
     wordCountInput.value = localStorage.getItem("wordCount") || 30
 
     // general settings
-    wordCountBtn.addEventListener("click", (event) => {
-        OnWordCountSet(event, event.target, wordCountInput.value)
-    })
+    settingsButtons.WordCount.addEventListener("click", (event) => OnWordCountSet(event, event.target, settingsInputs.WordCount.value))
+    settingsButtons.PageZoom.addEventListener("click", (event) => OnPageZoomSet(event, event.target, settingsInputs.PageZoom.value))
 
     // adding all themes to the themes form
     fetch("/config/themes")
