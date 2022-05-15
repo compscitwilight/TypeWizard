@@ -14,7 +14,7 @@ const DefaultSettings = {
     WordCount: 30
 }
 
-if (!localStorage.getItem("theme") || !localStorage.getItem("language")) {
+if (localStorage.length < DefaultSettings.length) {
     localStorage.setItem("theme", DefaultSettings.Theme)
     localStorage.setItem("language", DefaultSettings.Language)
     localStorage.setItem("wordCount", DefaultSettings.WordCount)
