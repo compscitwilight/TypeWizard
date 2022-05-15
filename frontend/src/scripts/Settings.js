@@ -62,12 +62,6 @@ window.onload = () => {
             const linkTag = document.querySelector("#theme-link-tag")
             linkTag.href = themePath
         } catch (err) {
-            const linkTag = document.createElement("link")
-            document.head.appendChild(linkTag)
-            linkTag.id = "theme-link-tag"
-            linkTag.href = themePath
-            linkTag.rel = "stylesheet"
-
             location.reload()
         }
     }
