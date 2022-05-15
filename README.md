@@ -11,13 +11,13 @@
 ### Showcase
 <details>
     <summary markdown="span">Homepage</summary>
-    <img src="/.github/images/TypeWizardHomepage.png">
+    <img src="/.github/images/TypeWizardHomepage.PNG">
 </details>
 <details>
     <summary markdown="span">Settings</summary>
-    <img src="/.github/images/TypeWizardSettings.png">
+    <img src="/.github/images/TypeWizardSettings.PNG">
 </details>
 <details>
     <summary markdown="span">About</summary>
-    <img src="/.github/images/TypeWizardAbout.png">
+    <img src="/.github/images/TypeWizardAbout.PNG">
 </details>
