@@ -1,7 +1,11 @@
 [
     {
-        "name": "English",
-        "displayName": "English"
+        "name": "EnglishUS",
+        "displayName": "English (US)"
+    },
+    {
+        "name": "EnglishUK",
+        "displayName": "English (UK)"
     },
     {
         "name": "Spanish",
