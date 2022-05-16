@@ -90,3 +90,13 @@ button {
     cursor: pointer;
     border-style: none;
 }
+
+#settings-navigation {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+}
+
+#settings-navigation a:hover {
+    color: rgb(152, 129, 206);
+}
