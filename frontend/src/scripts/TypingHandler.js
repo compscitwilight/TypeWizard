@@ -80,40 +80,45 @@ fetch(`/languages/${localStorage.getItem("language")}`)
         // when a key is pressed down we will check if it is the next character in the text sequence
         document.addEventListener("keydown", (event) => {
             if (!playing || event.ctrlKey || event.altKey) return
+            const key = event.key
 
-            if (event.key == nextChar) {
-                const accuracy = stats.accuracy
-                if (accuracy < 100) stats.accuracy += 1.5
-
-                const element = sequenceElements[index]
-                element.id = "text-seen"
-                element.style.color = "orange"
-                element.style.fontFamily = "Montserrat"
-
-                index++
-                nextChar = text[index]
-            } else if (event.key == "Backspace") {
-                if (index > 1) {
-                    index--
-                    nextChar = text[index]
+            switch (key) {
+                case (nextChar):
+                    const accuracy = stats.accuracy
+                    if (accuracy < 100) stats.accuracy += 1.5
 
                     const element = sequenceElements[index]
-                    element.style.color = "white"
-                    element.style.borderStyle = "none"
-                }
-            } else if (event.key == "Enter") {
-                playing = false
-                displayStats()
-            } else {
-                const accuracy = stats.accuracy
-                const element = sequenceElements[index]
-                element.style.color = "red"
-                element.style.borderWidth = ".25px"
+                    element.id = "text-seen"
+                    element.style.color = "orange"
+                    element.style.fontFamily = "Montserrat"
 
-                index++
-                nextChar = text[index]
+                    index++
+                    nextChar = text[index]
+                    break
+                case ("Backspace"):
+                    if (index > 1) {
+                        index--
+                        nextChar = text[index]
 
-                if (accuracy > 0 && accuracy <= 100) stats.accuracy -= 2
+                        const element = sequenceElements[index]
+                        element.style.color = "white"
+                        element.style.borderStyle = "none"
+                    }
+                    break
+                case ("Enter"):
+                    playing = false
+                    displayStats()
+                    break
+                default:
+                    const finalAccuracy = stats.accuracy
+                    const finalElement = sequenceElements[index]
+                    finalElement.style.color = "red"
+                    finalElement.style.borderWidth = ".25px"
+
+                    index++
+                    nextChar = text[index]
+
+                    if (finalAccuracy > 0 && finalAccuracy <= 100) stats.accuracy -= 2
             }
 
             if (index == text.length) {
