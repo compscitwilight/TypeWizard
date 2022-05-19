@@ -8,8 +8,8 @@ fetch(`/languages/${localStorage.getItem("language")}`)
         const wordCount = localStorage.getItem("wordCount") || 30
         let text = ""
         for (var i = 0; i < wordCount; i++) {
-            const randomIndex = Math.floor(Math.random() * (words.length))
-            const word = words[randomIndex]
+            let randomIndex = Math.floor(Math.random() * (words.length))
+            let word = words[randomIndex]
             text = text + ` ${word}`
         }
 
@@ -17,6 +17,7 @@ fetch(`/languages/${localStorage.getItem("language")}`)
         let index = 1
         let playing = true
         let nextChar = text[index]
+
         const stats = {
             accuracy: 100,
             speed: 90,
@@ -80,14 +81,14 @@ fetch(`/languages/${localStorage.getItem("language")}`)
         // when a key is pressed down we will check if it is the next character in the text sequence
         document.addEventListener("keydown", (event) => {
             if (!playing || event.ctrlKey || event.altKey) return
-            const key = event.key
+            let key = event.key
 
             switch (key) {
                 case (nextChar):
                     const accuracy = stats.accuracy
                     if (accuracy < 100) stats.accuracy += 1.5
 
-                    const element = sequenceElements[index]
+                    let element = sequenceElements[index]
                     element.id = "text-seen"
                     element.style.color = "orange"
                     element.style.fontFamily = "Montserrat"
@@ -100,7 +101,7 @@ fetch(`/languages/${localStorage.getItem("language")}`)
                         index--
                         nextChar = text[index]
 
-                        const element = sequenceElements[index]
+                        let element = sequenceElements[index]
                         element.style.color = "white"
                         element.style.borderStyle = "none"
                     }
@@ -110,8 +111,8 @@ fetch(`/languages/${localStorage.getItem("language")}`)
                     displayStats()
                     break
                 default:
-                    const finalAccuracy = stats.accuracy
-                    const finalElement = sequenceElements[index]
+                    let finalAccuracy = stats.accuracy
+                    let finalElement = sequenceElements[index]
                     finalElement.style.color = "red"
                     finalElement.style.borderWidth = ".25px"
 
