@@ -1,4 +1,5 @@
 const express = require("express")
+const path = require("path")
 const fs = require("fs")
 const ws = require("ws")
 
@@ -23,7 +24,7 @@ site.use("/config", config)
 site.use("/localization", localization)
 
 site.get("/", (req, res) => {
-    res.sendFile("/frontend/src/pages/index.html", ROOT)
+    res.sendFile(path.resolve(process.cwd(), "frontend/src/pages/index.html"))
 })
 
 site.get("/:page", (req, res) => {
