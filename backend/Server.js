@@ -23,7 +23,7 @@ site.use("/config", config)
 site.use("/localization", localization)
 
 site.get("/", (req, res) => {
-    res.sendFile("/frontend/src/pages/index.html", ROOT)
+    res.sendFile("../frontend/src/pages/index.html", ROOT)
 })
 
 site.get("/:page", (req, res) => {
