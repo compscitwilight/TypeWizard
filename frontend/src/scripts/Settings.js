@@ -71,11 +71,12 @@ window.onload = () => {
     // functions
     const SetTheme = (name) => {
         const themePath = `${themePaths}/${name}`
+        const linkTag = document.querySelector("#theme-link-tag")
         try {
-            const linkTag = document.querySelector("#theme-link-tag")
             linkTag.href = themePath
         } catch (err) {
             console.warn(err)
+            linkTag.href = `${themePaths}/Basic`
         }
     }
     SetTheme(localStorage.getItem("theme"))
