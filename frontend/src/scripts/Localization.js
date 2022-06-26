@@ -1,4 +1,11 @@
-const language = localStorage.getItem("language") || "English"
+let language
+
+if (localStorage.getItem("language")) {
+    language = localStorage.getItem("language")
+} else {
+    localStorage.setItem("language", "English")
+    language = "English"
+}
 const languageTranslations = `/localization/${language}`
 
 const paragraphs = document.querySelectorAll("p")
