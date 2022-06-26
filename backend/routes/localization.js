@@ -7,7 +7,7 @@ const ROOT = { root: "../" }
 
 router.get("/:language", (req, res) => {
     const path = pathJs.resolve(process.cwd(), `static/localization/${req.params.language}.json`)
-    if (!fs.existsSync(`${ROOT.root}${path}`)) {
+    if (!fs.existsSync(path)) {
         res.sendFile(pathJs.resolve(process.cwd(), "/frontend/src/pages/notfound.html"))
         return
     }
