@@ -22,11 +22,9 @@ const DefaultSettings = {
     WordCount: 30
 }
 
-if (localStorage.length < DefaultSettings.length) {
-    localStorage.setItem("theme", DefaultSettings.Theme)
-    localStorage.setItem("language", DefaultSettings.Language)
-    localStorage.setItem("wordCount", DefaultSettings.WordCount)
-}
+if (!localStorage.getItem("theme")) localStorage.setItem("theme", DefaultSettings.Theme)
+if (!localStorage.getItem("language")) localStorage.setItem("language", DefaultSettings.Language)
+if (!localStorage.getItem("wordCount")) localStorage.setItem("wordCount", DefaultSettings.WordCount)
 
 // event functions
 const OnThemeButtonSelect = (event, element) => {
