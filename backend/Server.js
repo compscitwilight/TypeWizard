@@ -36,6 +36,6 @@ site.get("/:page", (req, res) => {
     res.sendFile(path, ROOT)
 })
 
-site.listen(PORT, () => {
+site.listen(process.env.PORT || 3000, () => {
     console.log("Server is online.")
 })
