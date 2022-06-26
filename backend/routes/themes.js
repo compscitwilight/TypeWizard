@@ -8,8 +8,7 @@ const ROOT = { root: "../" }
 router.get("/:theme", (req, res) => {
     const path = pathJs.resolve(process.cwd(), `frontend/src/styles/themes/${req.params.theme}.css`)
     if (!fs.existsSync(`${ROOT.root}${path}`)) {
-        res.sendFile(pathJs.resolve(process.cwd(), "frontend/src/pages/notfound.html"))
-        return
+        return res.status(404)
     }
 
     res.sendFile(path)
