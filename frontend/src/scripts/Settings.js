@@ -75,11 +75,7 @@ window.onload = () => {
         try {
             linkTag.href = themePath
         } catch (err) {
-            console.warn(err)
-            const fixedTag = document.createElement("link")
-            fixedTag.id = "theme-link-tag"
-            fixedTag.href = themePath
-            document.head.appendChild(fixedTag)
+            location.reload()
         }
     }
     SetTheme(localStorage.getItem("theme"))
