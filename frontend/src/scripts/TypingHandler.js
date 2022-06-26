@@ -127,7 +127,6 @@ fetch(`/languages/${localStorage.getItem("language")}`)
                 playing = false
             }
         })
-
     }).catch(err => {
         console.warn(err)
     })

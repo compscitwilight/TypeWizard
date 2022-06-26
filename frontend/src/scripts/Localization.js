@@ -3,8 +3,8 @@ let language
 if (localStorage.getItem("language")) {
     language = localStorage.getItem("language")
 } else {
-    localStorage.setItem("language", "English")
-    language = "English"
+    localStorage.setItem("language", "EnglishUS")
+    language = "EnglishUS"
 }
 const languageTranslations = `/localization/${language}`
 
