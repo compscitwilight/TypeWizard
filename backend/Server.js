@@ -1,5 +1,5 @@
 const express = require("express")
-const path = require("path")
+const pathJs = require("path")
 const fs = require("fs")
 const ws = require("ws")
 
@@ -24,17 +24,17 @@ site.use("/config", config)
 site.use("/localization", localization)
 
 site.get("/", (req, res) => {
-    res.sendFile(path.resolve(process.cwd(), "frontend/src/pages/index.html"))
+    res.sendFile(pathJs.resolve(process.cwd(), "frontend/src/pages/index.html"))
 })
 
 site.get("/:page", (req, res) => {
-    const path = `/frontend/src/pages/${req.params.page}.html`
+    const path = pathJs.resolve(process.cwd(), `frontend/src/pages/${req.params.page}.html`)
     if (!fs.existsSync(`${ROOT.root}${path}`)) {
-        res.sendFile("/frontend/src/pages/notfound.html", ROOT)
+        res.sendFile(pathJs.resolve(process.cwd(), "frontend/src/pages/notfound.html"))
         return
     }
 
-    res.sendFile(path, ROOT)
+    res.sendFile(path)
 })
 
 site.listen(process.env.PORT || 3000, () => {

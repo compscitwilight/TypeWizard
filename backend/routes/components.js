@@ -1,16 +1,17 @@
 const express = require("express")
+const pathJs = require("path")
 const fs = require("fs")
 const router = express.Router()
 
 const ROOT = { root: "../" }
 
 router.get("/:component", (req, res) => {
-    const path = `/frontend/components/${req.params.component}.html`
+    const path = pathJs.resolve(process.cwd(), `frontend/components/${req.params.component}.html`)
     if (!fs.existsSync(`${ROOT.root}${path}`)) {
-        return res.sendFile("/frontend/src/pages/notfound.html", ROOT)
+        return res.sendFile(pathJs.resolve(process.cwd(), "frontend/src/pages/notfound.html"))
     }
 
-    res.sendFile(path, ROOT)
+    res.sendFile(path)
 })
 
 module.exports = router
