@@ -76,7 +76,6 @@ window.onload = () => {
             linkTag.href = themePath
         } catch (err) {
             console.warn(err)
-            linkTag.href = `${themePaths}/Basic`
         }
     }
     SetTheme(localStorage.getItem("theme"))
